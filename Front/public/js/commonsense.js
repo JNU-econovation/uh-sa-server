@@ -117,25 +117,22 @@ window.addEventListener("keydown", (e) => {
   clearInterval(setTime);
   if (e.keyCode === 37) {
     compareLeft(arr[order + 5 * (player - 1)]);
-    if (order === 5) {
-      location.href = "http://localhost:3000/close/ranking_save";
-    }
   } else if (e.keyCode === 39) {
     compareRight(arr[order + 5 * (player - 1)]);
-    if (order === 5) {
-      location.href = "http://localhost:3000/close/ranking_save";
-    }
   }
 
   if (order < 5) order++;
   getQuestion(arr[order + 5 * (player - 1)]);
+  console.log(arr[order + 5 * (player - 1)]);
   time = 9;
   sec = "";
   timer.innerText = "00" + ":" + "10";
   setTime = setInterval(goTimeZero, 1000);
-
   if (order === 5) {
+    compareLeft(order[4 + 5 * (player - 1)]);
+    compareRight(order[4 + 5 * (player - 1)]);
     location.href = "http://localhost:3000/close/ranking_save";
   }
+
   console.log(localStorage.getItem("SCORE"));
 });
